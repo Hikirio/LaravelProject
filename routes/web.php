@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
  * Вывести панель с задачами
  */
 Route::get('/', function () {
-
     return view('welcome');
 });
 
@@ -41,22 +40,15 @@ Route::post('/task', function (Request $request) {
     return redirect('/task');
     // Создание задачи...
 });
-
+/**
+ * Изменить задачу
+ */
 Route::get('/task/edit/{task}', 'TaskController@edit');
 
 /**
  * Удалить задачу
  */
-Route::delete('/task/{task}', function (Task $task) {
-    $task->delete();
-    return redirect('/task');
-});
-//Route::edit('/task/{task}', function (Task $task) {
-//    $task->edit();
-//    return redirect('/task');
-//});
-
-
+Route::delete('/task/{task}', 'TaskController@destroy');
 
 Auth::routes();
 
