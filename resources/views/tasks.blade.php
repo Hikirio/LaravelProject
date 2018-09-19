@@ -8,9 +8,10 @@
     <div class="container">
         <div class="col-sm-offset-2 col-sm-8">
             <div class="panel panel-default">
-                {{--<div class="panel-heading">--}}
-                {{--New Task--}}
-                {{--</div>--}}
+                <div class="panel-heading">
+                Добавить новую запись
+                </div>
+                <hr>
                 <div class="panel-body">
                     <!-- Отображение ошибок проверки ввода -->
                 @include('common.errors')
@@ -24,14 +25,14 @@
                             <label for="task" class="col-sm-3 control-label">Title</label>
 
                             <div class="col-sm-6">
-                                <input type="text" name="name" id="task-name" class="form-control">
+                                <input type="text" rows="45" name="name" id="task-name" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="task" class="col-sm-3 control-label">Text</label>
 
                             <div class="col-sm-6">
-                                <input type="text" name="text" id="task-name" class="form-control">
+                                <textarea rows="10" cols="45" name="text" id="task-name" class="form-control"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -52,6 +53,7 @@
                         </div>
                     </form>
                 </div>
+                <hr>
 
                 @if (count($tasks) > 0)
                     <div class="panel-body">
@@ -98,6 +100,14 @@
 
                                             <button type="submit" class="btn btn-danger">
                                                 <i class="fa fa-btn fa-trash"></i>Delete
+                                            </button>
+                                        </form>
+                                        <form action="{{ url('/task/edit/'.$task->id) }}" method="get">
+                                            {{ csrf_field() }}
+                                            {{ method_field('EDIT') }}
+
+                                            <button type="submit" class="btn btn-danger">
+                                                <i class="fa fa-btn fa-edit"></i>Edit
                                             </button>
                                         </form>
                                     </td>

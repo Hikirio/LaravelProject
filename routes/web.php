@@ -3,25 +3,12 @@
 use App\Task;
 use Illuminate\Http\Request;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 /**
  * Вывести панель с задачами
  */
 Route::get('/', function () {
-    $tasks = Task::orderBy('created_at', 'asc')->get();
-    return view('welcome', [
-        'tasks' => $tasks
-    ]);
+
+    return view('welcome');
 });
 
 Route::get('/task', function () {
@@ -34,10 +21,12 @@ Route::get('/task', function () {
 Route::post('/task', function (Request $request) {
     $validator = Validator::make($request->all(), [
         'name' => 'required|max:255',
+        'text' => 'required|max:255',
+        'author' => 'required|max:255',
     ]);
 
     if ($validator->fails()) {
-        return redirect('/')
+        return redirect('/task')
             ->withInput()
             ->withErrors($validator);
     }
@@ -53,14 +42,22 @@ Route::post('/task', function (Request $request) {
     // Создание задачи...
 });
 
+Route::get('/task/edit/{task}', 'TaskController@edit');
+
 /**
  * Удалить задачу
  */
 Route::delete('/task/{task}', function (Task $task) {
     $task->delete();
-    return redirect('/');
+    return redirect('/task');
 });
+//Route::edit('/task/{task}', function (Task $task) {
+//    $task->edit();
+//    return redirect('/task');
+//});
+
+
 
 Auth::routes();
 
-Route::get('/tasks', 'HomeController@index')->name('Admin Panel');
+//Route::get('/tasks', 'HomeController@index')->name('Admin Panel');
