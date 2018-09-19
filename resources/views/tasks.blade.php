@@ -9,7 +9,7 @@
         <div class="col-sm-offset-2 col-sm-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                Добавить новую запись
+                    <h1> Добавить новую запись</h1>
                 </div>
                 <hr>
                 <div class="panel-body">
@@ -22,22 +22,23 @@
 
                     <!-- Имя задачи -->
                         <div class="form-group">
-                            <label for="task" class="col-sm-3 control-label">Title</label>
+                            <label for="task" class="col-sm-3 control-label"><h3>Title</h3></label>
 
                             <div class="col-sm-6">
                                 <input type="text" rows="45" name="name" id="task-name" class="form-control">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="task" class="col-sm-3 control-label">Text</label>
 
+                        <div class="form-group">
+                            <label for="task" class="col-sm-3 control-label"><h3>Text</h3></label>
                             <div class="col-sm-6">
-                                <textarea rows="10" cols="45" name="text" id="task-name" class="form-control"></textarea>
+                                <textarea rows="10" cols="45" name="text" id="task-name"
+                                          class="form-control"></textarea>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="task" class="col-sm-3 control-label">Author</label>
 
+                        <div class="form-group">
+                            <label for="task" class="col-sm-3 control-label"><h3>Author</h3></label>
                             <div class="col-sm-6">
                                 <input type="text" name="author" id="task-name" class="form-control">
                             </div>
@@ -46,7 +47,7 @@
                         <!-- Кнопка добавления задачи -->
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-6">
-                                <button type="submit" class="btn btn-default">
+                                <button type="submit" class="btn btn-danger">
                                     <i class="fa fa-plus"></i> Добавить задачу
                                 </button>
                             </div>
