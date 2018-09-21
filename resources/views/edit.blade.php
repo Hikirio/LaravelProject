@@ -14,7 +14,8 @@
                 @include('common.errors')
 
                 <!-- Форма новой задачи -->
-                    <form action="{{ url('task') }}" method="POST" class="form-horizontal">
+                    <form action="{{ url('task/update/'.$task->id) }}" method="post" class="form-horizontal">
+                        <input type="hidden" name="_method" value="PUT">
                     {{ csrf_field() }}
 
                     <!-- Имя задачи -->
@@ -22,21 +23,24 @@
                             <label for="task" class="col-sm-3 control-label">Title</label>
 
                             <div class="col-sm-6">
-                                <input type="text" name="name" value="{{$task->name}}" id="task-name" class="form-control">
+                                <input type="text" name="name" value="{{$task->name}}" id="task-name"
+                                       class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="task" class="col-sm-12 control-label">Text</label>
 
                             <div class="col-sm-6">
-                                <input type="text" name="text" value="{{$task->text}}" id="task-name" class="form-control">
+                                <input type="text" name="text" value="{{$task->text}}" id="task-name"
+                                       class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="task" class="col-sm-3 control-label">Author</label>
 
                             <div class="col-sm-6">
-                                <input type="text" name="author"value="{{$task->author}}" id="task-name" class="form-control">
+                                <input type="text" name="author" value="{{$task->author}}" id="task-name"
+                                       class="form-control">
                             </div>
                         </div>
 
@@ -50,4 +54,4 @@
                         </div>
                     </form>
                 </div>
-                @endsection
+@endsection

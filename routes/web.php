@@ -6,49 +6,26 @@ use Illuminate\Http\Request;
 /**
  * Вывести панель с задачами
  */
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'TaskController@grid');
+//Route::get('/task/edit/{task}', 'TaskController@edit');
+Route::get('/task', 'TaskController@task_grid');//task/index index
+Route::post('/banners/upload', 'ImageController@upload');
+Route::get('/banners', 'ImageController@index');
+Route::post('/task/create', 'TaskController@create');
+//add
 
-Route::get('/task', function () {
-    $tasks = Task::orderBy('created_at', 'asc')->get();
-    return view('tasks', [
-        'tasks' => $tasks
-    ]);
-});
-
-Route::post('/task', function (Request $request) {
-    $validator = Validator::make($request->all(), [
-        'name' => 'required|max:255',
-        'text' => 'required|max:255',
-        'author' => 'required|max:255',
-    ]);
-
-    if ($validator->fails()) {
-        return redirect('/task')
-            ->withInput()
-            ->withErrors($validator);
-    }
-
-    $task = new Task;
-    $task->name = $request->name;
-    $task->text = $request->text;
-    $task->author = $request->author;
-
-    $task->save();
-
-    return redirect('/task');
-    // Создание задачи...
-});
 /**
  * Изменить задачу
  */
 Route::get('/task/edit/{task}', 'TaskController@edit');
+Route::put('/task/update/{task}', 'TaskController@update');
+//Route::GET('/task/{task}/edit', 'TaskController@edit');
+//Route::PUT('/task/{task}/update', 'TaskController@update');
 
 /**
  * Удалить задачу
  */
-Route::delete('/task/{task}', 'TaskController@destroy');
+Route::delete('/task/{task}', 'TaskController@destroy');//task/delete
 
 Auth::routes();
 

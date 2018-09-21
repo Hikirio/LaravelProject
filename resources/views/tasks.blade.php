@@ -1,7 +1,4 @@
-<!-- resources/views/tasks.blade.php -->
-
 @extends('layouts.app')
-
 @section('content')
 
     <!-- Bootstrap шаблон... -->
@@ -17,7 +14,7 @@
                 @include('common.errors')
 
                 <!-- Форма новой задачи -->
-                    <form action="{{ url('task') }}" method="POST" class="form-horizontal">
+                    <form action="{{ url('task/create') }}" method="POST" class="form-horizontal">
                     {{ csrf_field() }}
 
                     <!-- Имя задачи -->
@@ -59,7 +56,6 @@
                 @if (count($tasks) > 0)
                     <div class="panel-body">
                         <table class="table table-striped task-table">
-
                             <!-- Заголовок таблицы -->
                             <thead>
                             <th>Tasks</th>
@@ -98,7 +94,6 @@
                                         <form action="{{ url('task/'.$task->id) }}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
-
                                             <button type="submit" class="btn btn-danger">
                                                 <i class="fa fa-btn fa-trash"></i>Delete
                                             </button>
@@ -112,13 +107,9 @@
                                             </button>
                                         </form>
                                     </td>
-
-                                    <td>
-
-                                    </td>
                                 </tr>
                                 @endforeach
-                                </tbody>
+
                         </table>
                     </div>
             </div>

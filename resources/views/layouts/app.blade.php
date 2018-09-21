@@ -18,8 +18,17 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    {{--<!-- FlexSlider -->--}}
+    {{--<link rel="stylesheet" href="../flexslider.css" type="text/css" media="screen" />--}}
+    {{--<script type="text/javascript" charset="utf-8">--}}
+        {{--$(window).load(function() {--}}
+            {{--$('.flexslider').flexslider();--}}
+        {{--});--}}
+    {{--</script>--}}
 </head>
 <body>
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
@@ -59,9 +68,11 @@
                                         {{ __('Logout') }}
                                     </a>
 
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+
                                 </div>
                             </li>
                         @endguest
